@@ -1,0 +1,70 @@
+# Japan Dual Pricing Check (二重価格)
+
+> Free, unofficial checker of resident vs non-resident ("dual") prices at Japanese tourist sites: Himeji Castle, Odawara Castle, Nanzoin, JUNGLIA Okinawa, Nara Prison Museum, Sapporo TV Tower, Asahiyama Zoo, Kitakyushu and Kagoshima City facilities, Miyajima visitor tax, plus the announced Nijo Castle and Kyoto City Bus prices (FY2027), national museums (by FY2030), Kenrokuen (under review) and Osaka Castle (dropped). Data as of 2026-10-16. Educational guide, not legal, travel or financial advice; the facility decides.
+
+Site: https://japan-dual-pricing.vercel.app
+
+## Key facts (official sources below)
+- Japanese dual pricing is based on where you are registered as living (city, prefecture or Japan), NOT nationality. Foreign residents with an address in Japan get resident prices; Japanese visitors from other cities pay the higher price where the test is a city.
+- Himeji Castle (since 2026-03-01): ¥1,000 Himeji City residents 18+, ¥2,500 everyone else 18+, under-18s free. Proof: My Number card or ID.
+- Nijo Castle (Kyoto, announced 2026-10-01, FY2027): set ticket ¥1,300 today → ¥1,000 Kyoto City residents / ¥2,000 others. Ordinance at the November 2026 council.
+- Kyoto City Bus (announced, FY2027, needs national approval): flat fare ¥230 today → ¥200 residents (My Number linked IC card) / ¥360 others.
+- Odawara Castle ¥500 / ¥1,000 (2026-03-01). Nanzoin (Fukuoka) free for Japan residents / ¥500 overseas (2026-03-01; ¥300 from May 2025). JUNGLIA Okinawa ¥6,930 Japan residents / ¥8,800 general. Nara Prison Museum ¥2,000 Nara / ¥2,500 Japan / ¥3,500 overseas.
+- Kagoshima City: 14 facilities with a non-resident fee since 2025-10-01 (11 tracked). Kitakyushu: 4 facilities since 2026-04-01.
+- National museums / art museums: a higher price for visitors not living in Japan by the end of FY2030; no prices set.
+- Japan Tourism Agency study group on tourist-site pricing (from 2026-04-27) plans guidelines in FY2026.
+
+## API (free, no key, CORS open)
+
+### GET
+GET https://japan-dual-pricing.vercel.app/api/check?places=himeji-castle,odawara-castle,nanzoin&residence=overseas&date=2026-11-20
+→ summary {totalYouPayJPY 4000, totalCheapestResidentJPY 1500, extraYouPayJPY 2500}, headline "As a visitor from abroad you pay ¥2,500 more than the cheapest resident price at 3 of 3 place(s)…", per place: yourTier, yourPriceJPY, tiers, proof, foreignResidents, sources
+
+GET https://japan-dual-pricing.vercel.app/api/check?places=nijo-castle,kyoto-city-bus,himeji-castle&residence=overseas
+→ Himeji in force; Nijo Castle and Kyoto City Bus "planned" with today ¥1,300 / ¥230 and planned ¥2,000 / ¥360 (plannedExtraJPY 830)
+
+GET https://japan-dual-pricing.vercel.app/api/check?city=himeji&prefecture=hyogo&places=himeji-castle,nara-prison-museum
+→ Himeji resident tier ¥1,000; Nara Prison Museum Japan-resident tier ¥2,500
+
+GET https://japan-dual-pricing.vercel.app/api/check?status=live
+→ every place with dual pricing in force (omit places to list all; filter with area=kagoshima, status=announced|under_review|not_adopted)
+
+Params: places (comma-separated ids or names, e.g. himeji-castle, nijo-castle, kyoto-city-bus, 姫路城); residence (overseas | japan; default overseas, implied japan if prefecture/city given); prefecture (slug or name, e.g. kyoto, 兵庫県); city (e.g. himeji, Sakyo-ku, 鹿児島市); date (YYYY-MM-DD, default today JST); age; area (prefecture filter); status (all | live | announced | under_review | not_adopted).
+
+### POST
+POST https://japan-dual-pricing.vercel.app/api/check
+Content-Type: application/json
+```json
+{"places": ["kokura-castle", "hirakawa-zoo"], "residence": "overseas", "date": "2026-12-01"}
+```
+
+### All places + prefectures + sources
+GET https://japan-dual-pricing.vercel.app/api/rules
+
+### Discovery
+- OpenAPI 3.1: https://japan-dual-pricing.vercel.app/openapi.json
+- Plugin manifest: https://japan-dual-pricing.vercel.app/.well-known/ai-plugin.json
+- MCP tool `japan_dual_pricing_check` on https://free-agent-tools.vercel.app/mcp
+
+## Shareable result links
+- https://japan-dual-pricing.vercel.app/r?p=himeji-castle,odawara-castle,nanzoin&res=overseas
+- https://japan-dual-pricing.vercel.app/r?p=nijo-castle,kyoto-city-bus,himeji-castle&res=overseas
+- Preview image: https://japan-dual-pricing.vercel.app/og?p=himeji-castle,odawara-castle,nanzoin&res=overseas
+
+## Sources
+- https://www.mlit.go.jp/kankocho/page08_00012.html (Japan Tourism Agency study group on tourist-site pricing)
+- https://www.mlit.go.jp/kankocho/content/002011640.pdf (JTA case list, 2026-07-14)
+- Each facility's / city's official page (linked per place in /api/rules)
+
+## Disclaimer
+Educational guide, not legal, travel or financial advice. Facilities set and change prices and proof rules; announced plans can change. Adult admission only. Not affiliated with any facility, city, the Japan Tourism Agency or the Agency for Cultural Affairs.
+
+## Other free tools by the same maker
+- Japan Tax-Free Refund Checker: https://japan-tax-free-refund.vercel.app
+- Japan Customs Allowance Checker: https://japan-customs-allowance.vercel.app
+- Japan Luggage Check: https://japan-luggage.vercel.app
+- Kyushu Travel Discount Calculator: https://kyushu-travel-discount.vercel.app
+- Japan Visa Fee Calculator: https://japan-visa-fee.vercel.app
+- Japan TB Screening Check: https://japan-tb-screening.vercel.app
+- Japan Trip Brain: https://japan-trip-brain.vercel.app
+- Free Agent Tools MCP: https://free-agent-tools.vercel.app
