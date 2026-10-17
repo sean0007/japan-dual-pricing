@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   description,
   alternates: { canonical: "/" },
   openGraph: { title, description },
-  twitter: { title, description },
+  twitter: { card: "summary_large_image", title, description },
 };
 
 const live = PLACES.filter((p) => p.status === "live");
