@@ -67,5 +67,6 @@ Educational guide, not legal, travel or financial advice. Facilities set and cha
 - Japan Visa Fee Calculator: https://japan-visa-fee.vercel.app
 - Japan TB Screening Check: https://japan-tb-screening.vercel.app
 - Japan Alert Decoder: https://japan-alert-decoder.vercel.app
+- Japan PR Guideline Check (permanent residence guideline revised 2026-10-01): https://japan-pr-check.vercel.app
 - Japan Trip Brain: https://japan-trip-brain.vercel.app
 - Free Agent Tools MCP: https://free-agent-tools.vercel.app
