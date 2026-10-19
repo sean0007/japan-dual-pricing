@@ -68,5 +68,6 @@ Educational guide, not legal, travel or financial advice. Facilities set and cha
 - Japan TB Screening Check: https://japan-tb-screening.vercel.app
 - Japan Alert Decoder: https://japan-alert-decoder.vercel.app
 - Japan PR Guideline Check (permanent residence guideline revised 2026-10-01): https://japan-pr-check.vercel.app
+- Japan International Postage 2027 (Japan Post international mail prices now vs from 2027-02-01: EMS in 1 kg bands, air / surface parcels, small packets, International Air Packet, letters, postcards for any country; keyless API): https://japan-intl-postage.vercel.app
 - Japan Trip Brain: https://japan-trip-brain.vercel.app
 - Free Agent Tools MCP: https://free-agent-tools.vercel.app
