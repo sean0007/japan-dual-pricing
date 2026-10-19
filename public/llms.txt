@@ -1,8 +1,8 @@
 # Japan Dual Pricing Check (二重価格)
 
-> Free, unofficial checker of resident vs non-resident ("dual") prices at Japanese tourist sites: Himeji Castle, Odawara Castle, Nanzoin, JUNGLIA Okinawa, Nara Prison Museum, Sapporo TV Tower, Asahiyama Zoo, Kitakyushu and Kagoshima City facilities, Miyajima visitor tax, plus the announced Nijo Castle and Kyoto City Bus prices (FY2027), national museums (by FY2030), Kenrokuen (under review) and Osaka Castle (dropped). Data as of 2026-10-16. Educational guide, not legal, travel or financial advice; the facility decides.
+> Free, unofficial Japan dual pricing tracker and checker: resident vs non-resident ("dual") prices at Japanese tourist sites: Himeji Castle, Odawara Castle, Nanzoin, JUNGLIA Okinawa, Nara Prison Museum, Sapporo TV Tower, Asahiyama Zoo, Kitakyushu and Kagoshima City facilities, Miyajima visitor tax, plus the announced Nijo Castle and Kyoto City Bus prices (FY2027), national museums (by FY2030), Kenrokuen (under review) and Osaka Castle (dropped). Data as of 2026-10-16. Educational guide, not legal, travel or financial advice; the facility decides.
 
-Site: https://japan-dual-pricing.vercel.app
+Site: https://japan-dual-pricing.vercel.app (full per-place price table: https://japan-dual-pricing.vercel.app/#tracker)
 
 ## Key facts (official sources below)
 - Japanese dual pricing is based on where you are registered as living (city, prefecture or Japan), NOT nationality. Foreign residents with an address in Japan get resident prices; Japanese visitors from other cities pay the higher price where the test is a city.

@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import { Calculator } from "@/components/calculator";
 import { FaqSection, type FaqItem } from "@/components/faq-section";
 import { DATA_AS_OF, PLACES, STATUS_LABEL } from "@/lib/dual";
+import type { Place, Tier } from "@/lib/places";
 import { PUBLIC_URL, yen } from "@/lib/share";
 
-const title = "Japan dual pricing 2026: do tourists pay more? Himeji Castle, Nijo Castle, Kyoto bus and more";
+const title = "Japan dual pricing tracker: where tourists pay more (2026)";
 const description =
-  "Free checker of Japan's dual pricing (二重価格): resident vs non-resident prices at Himeji Castle (¥1,000 / ¥2,500), Odawara Castle, Nanzoin, JUNGLIA Okinawa, Nara Prison Museum, Sapporo TV Tower, Kitakyushu and Kagoshima City, plus the planned Nijo Castle (¥1,000 / ¥2,000) and Kyoto City Bus (¥200 / ¥360) prices for FY2027. Residence, not nationality. Free JSON API for AI agents. Not advice.";
+  "Free Japan dual pricing tracker & checker (二重価格): resident vs non-resident prices at Himeji Castle (¥1,000 / ¥2,500), Odawara Castle, Nanzoin, JUNGLIA Okinawa, Nara Prison Museum, Sapporo TV Tower, Kitakyushu and Kagoshima City, plus the planned Nijo Castle (¥1,000 / ¥2,000) and Kyoto City Bus (¥200 / ¥360) prices for FY2027. Residence, not nationality. Free JSON API for AI agents. Not advice.";
 
 export const revalidate = 3600;
 
@@ -19,11 +20,23 @@ export const metadata: Metadata = {
 };
 
 const live = PLACES.filter((p) => p.status === "live");
+
+const RESIDENT_KINDS = new Set(["municipality", "area", "prefecture", "japan"]);
+const tierText = (t: Tier) => `${t.label}: ${t.priceJPY === null ? "amount not listed" : yen(t.priceJPY)}`;
+/** Resident and visitor price cells, derived from the place's tiers (residents fall back to the general price when no resident tier exists). */
+function priceCells(p: Place): { resident: string; visitor: string } {
+  const residentTiers = p.tiers.filter((t) => RESIDENT_KINDS.has(t.who.kind));
+  const overseas = p.tiers.filter((t) => t.who.kind === "overseas");
+  const general = p.tiers.filter((t) => t.who.kind === "everyone");
+  const resident = (residentTiers.length ? residentTiers : general).map(tierText).join(" · ");
+  const visitor = (overseas.length ? [...overseas, ...general] : general).map(tierText).join(" · ");
+  return { resident: resident || "—", visitor: visitor || "—" };
+}
 const webAppLd = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   name: "Japan Dual Pricing Check",
-  alternateName: ["Japan tourist price checker", "二重価格 チェッカー", "Japan foreigner price list"],
+  alternateName: ["Japan dual pricing tracker", "Japan tourist price checker", "二重価格 チェッカー", "Japan foreigner price list"],
   url: PUBLIC_URL,
   applicationCategory: "TravelApplication",
   operatingSystem: "Any",
@@ -94,13 +107,13 @@ const faq: FaqItem[] = [
 ];
 
 export default function HomePage() {
-  const rows = PLACES.filter((p) => p.status !== "flat").slice(0, 40);
+  const rows = PLACES;
   return (
     <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:py-10">
       <section className="max-w-3xl">
         <p className="font-mono text-[11px] tracking-[0.28em] text-amber uppercase">Free · Japan · 二重価格 · data {DATA_AS_OF}</p>
-        <h1 className="mt-3 font-display text-4xl leading-[1.05] tracking-tight sm:text-6xl">Do tourists pay more in Japan?</h1>
-        <p className="mt-4 max-w-2xl text-lg font-medium text-foreground sm:text-xl">Japan dual pricing checker: resident vs non-resident prices</p>
+        <h1 className="mt-3 font-display text-4xl leading-[1.05] tracking-tight sm:text-6xl">Japan dual pricing tracker &amp; checker</h1>
+        <p className="mt-4 max-w-2xl text-lg font-medium text-foreground sm:text-xl">Do tourists pay more in Japan? Resident vs non-resident prices at {PLACES.length} tracked places, last checked {DATA_AS_OF}</p>
         <p className="mt-2 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
           Himeji Castle now charges ¥2,500 to anyone who doesn&apos;t live in Himeji. Nijo Castle and Kyoto&apos;s buses plan the same for 2027. Pick the places on your trip, say where you live, and see what you pay, why, and what ID gets the local price.
         </p>
@@ -110,30 +123,52 @@ export default function HomePage() {
         <Calculator />
       </section>
 
-      <section className="mt-16 max-w-4xl">
-        <h2 className="font-display text-3xl tracking-tight sm:text-4xl">All tracked places</h2>
+      <section id="tracker" className="mt-16 max-w-6xl">
+        <h2 className="font-display text-3xl tracking-tight sm:text-4xl">Japan dual pricing tracker: all {rows.length} places</h2>
+        <p className="mt-3 max-w-3xl text-sm text-muted sm:text-base">
+          Every place in this checker&apos;s dataset, with the resident price, the price for visitors (from abroad or from elsewhere in Japan), status, start date and source (the facility&apos;s or city&apos;s official page, or dated news for announced plans). Adult prices in yen. Last checked: <time dateTime={DATA_AS_OF}>{DATA_AS_OF}</time>.
+        </p>
         <div className="mt-5 overflow-x-auto rounded-3xl border border-line">
-          <table className="w-full min-w-[44rem] text-left text-sm">
+          <table className="w-full min-w-[64rem] text-left text-sm">
+            <caption className="sr-only">Japan dual pricing tracker: resident vs non-resident prices, last checked {DATA_AS_OF}</caption>
             <thead className="bg-panel/80 text-muted">
               <tr>
-                <th className="px-4 py-3 font-medium">Place</th>
-                <th className="px-4 py-3 font-medium">Status</th>
-                <th className="px-4 py-3 font-medium">Prices (adult)</th>
-                <th className="px-4 py-3 font-medium">Since / planned</th>
+                <th scope="col" className="px-4 py-3 font-medium">Place</th>
+                <th scope="col" className="px-4 py-3 font-medium">City</th>
+                <th scope="col" className="px-4 py-3 font-medium">Resident price</th>
+                <th scope="col" className="px-4 py-3 font-medium">Non-resident / visitor price</th>
+                <th scope="col" className="px-4 py-3 font-medium">Status</th>
+                <th scope="col" className="px-4 py-3 font-medium">Since / planned</th>
+                <th scope="col" className="px-4 py-3 font-medium">Source (official page, or dated news for plans)</th>
               </tr>
             </thead>
             <tbody>
-              {rows.map((p) => (
-                <tr key={p.id} className="border-t border-line align-top">
-                  <td className="px-4 py-3 text-foreground">
-                    {p.name} <span className="text-muted">{p.nameJa}</span>
-                    <div className="text-xs text-muted">{p.city}</div>
-                  </td>
-                  <td className="px-4 py-3 text-muted">{STATUS_LABEL[p.status]}</td>
-                  <td className="px-4 py-3 font-mono text-xs">{p.tiers.map((t) => `${t.label.split(" (")[0]}: ${yen(t.priceJPY)}`).join(" · ")}</td>
-                  <td className="px-4 py-3 font-mono text-xs">{p.effectiveFrom ?? p.plannedFrom ?? "—"}</td>
-                </tr>
-              ))}
+              {rows.map((p) => {
+                const cells = priceCells(p);
+                const source = p.sources[0];
+                return (
+                  <tr key={p.id} className="border-t border-line align-top">
+                    <th scope="row" className="px-4 py-3 text-left font-normal text-foreground">
+                      {p.name} <span className="text-muted">{p.nameJa}</span>
+                      <div className="text-xs text-muted">{p.ticket}</div>
+                    </th>
+                    <td className="px-4 py-3 text-muted">{p.city}</td>
+                    <td className="px-4 py-3 font-mono text-xs">{cells.resident}</td>
+                    <td className="px-4 py-3 font-mono text-xs">{cells.visitor}</td>
+                    <td className="px-4 py-3 text-muted">{STATUS_LABEL[p.status]}</td>
+                    <td className="px-4 py-3 font-mono text-xs">{p.effectiveFrom ?? p.plannedFrom ?? "—"}</td>
+                    <td className="px-4 py-3 text-xs">
+                      {source ? (
+                        <a className="underline underline-offset-2 hover:text-foreground" href={source} target="_blank" rel="noopener noreferrer">
+                          {new URL(source).hostname.replace(/^www\./, "")}
+                        </a>
+                      ) : (
+                        "—"
+                      )}
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
