@@ -69,5 +69,6 @@ Educational guide, not legal, travel or financial advice. Facilities set and cha
 - Japan Alert Decoder: https://japan-alert-decoder.vercel.app
 - Japan PR Guideline Check (permanent residence guideline revised 2026-10-01): https://japan-pr-check.vercel.app
 - Japan International Postage 2027 (Japan Post international mail prices now vs from 2027-02-01: EMS in 1 kg bands, air / surface parcels, small packets, International Air Packet, letters, postcards for any country; keyless API): https://japan-intl-postage.vercel.app
+- Japan Re-entry Deadline Check (when a foreign resident must be back in Japan: deemed re-entry 1 year or residence-card expiry if sooner, SPR 2 years, re-entry permits, 2-month special period while a renewal is pending; keyless API): https://japan-reentry-check.vercel.app
 - Japan Trip Brain: https://japan-trip-brain.vercel.app
 - Free Agent Tools MCP: https://free-agent-tools.vercel.app
