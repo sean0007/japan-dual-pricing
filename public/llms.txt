@@ -14,6 +14,42 @@ Site: https://japan-dual-pricing.vercel.app (full per-place price table: https:/
 - National museums / art museums: a higher price for visitors not living in Japan by the end of FY2030; no prices set.
 - Japan Tourism Agency study group on tourist-site pricing (from 2026-04-27) plans guidelines in FY2026.
 
+## Price table: all 32 places (adult prices in yen, as of 2026-10-16; same data as https://japan-dual-pricing.vercel.app/#tracker and /api/rules)
+| Place | Where | Status | Prices | Since |
+|---|---|---|---|---|
+| Himeji Castle (姫路城) | Himeji, Hyogo | in force | Himeji City residents ¥1,000 / Everyone else 18+ ¥2,500 | 2026-03-01 |
+| Nijō Castle (Nijo-jo) (二条城) | Kyoto, Kyoto | announced | Kyoto City residents ¥1,000 / Everyone else ¥2,000 / (today ¥1,300 for everyone) | planned FY2027 (April 2027–March 2028); ordinance planned for the November 2026 city council |
+| Kyoto City Bus (flat-fare zone) (京都市バス 市民優先価格) | Kyoto, Kyoto | announced | Kyoto City residents ¥200 / Everyone else ¥360 / (today ¥230 for everyone) | planned FY2027 (April 2027–March 2028), subject to national approval |
+| Odawara Castle keep (小田原城天守閣) | Odawara, Kanagawa | in force | Odawara City residents ¥500 / Everyone else ¥1,000 | 2026-03-01 |
+| Nanzoin Temple (Reclining Buddha) (南蔵院) | Sasaguri, Fukuoka | in force | People living in Japan ¥0 / Visitors from abroad ¥500 | 2025-05-01 |
+| JUNGLIA Okinawa (theme park) (ジャングリア沖縄) | Nakijin / Nago, Okinawa | in force | Japan residents ¥6,930 / General ¥8,800 | 2025-07-25 |
+| Nara Prison Museum by Hoshino Resorts (奈良監獄ミュージアム) | Nara, Nara | in force | Nara Prefecture residents ¥2,000 / Japan residents ¥2,500 / General admission ¥3,500 | 2026-04-27 |
+| Sapporo TV Tower observation deck (さっぽろテレビ塔) | Sapporo, Hokkaido | in force | Sapporo City residents ¥800 / Everyone else ¥1,200 | 2026-01-01 |
+| Asahiyama Zoo (旭山動物園) | Asahikawa, Hokkaido | in force | Asahikawa City residents ¥700 / Everyone else ¥1,000 | 2008-04-28 |
+| Takeshima Aquarium (竹島水族館) | Gamagori, Aichi | in force | Gamagori City residents ¥500 / Everyone else ¥1,200 | 2024-10-01 |
+| Chidorigafuchi boat rental (cherry-blossom season) (千鳥ヶ淵ボート場) | Chiyoda, Tokyo | in force | Chiyoda ward residents ¥800 / Everyone else ¥1,500 | 2026-03-01 |
+| Hakoyu public bath (Shuzenji) (筥湯) | Izu, Shizuoka | in force | Izu City residents and people working in Izu City ¥350 / Everyone else ¥700 |  |
+| Kokura Castle (小倉城) | Kitakyushu, Fukuoka | in force | Kitakyushu residents ¥400 / Everyone else ¥500 | 2026-04-01 |
+| Kokura Castle Japanese Garden (小倉城庭園) | Kitakyushu, Fukuoka | in force | Kitakyushu residents ¥400 / Everyone else ¥500 | 2026-04-01 |
+| Mojiko Retro Observation Room (門司港レトロ展望室) | Kitakyushu, Fukuoka | in force | Kitakyushu residents ¥400 / Everyone else ¥600 | 2026-04-01 |
+| Kyushu Railway History Museum (九州鉄道記念館) | Kitakyushu, Fukuoka | in force | Kitakyushu residents ¥400 / Everyone else ¥500 | 2026-04-01 |
+| Hirakawa Zoological Park (平川動物公園) | Kagoshima City, Kagoshima | in force | Kagoshima City residents ¥750 / Everyone else ¥1,000 | 2025-10-01 |
+| Io World Kagoshima Aquarium (いおワールドかごしま水族館) | Kagoshima City, Kagoshima | in force | Kagoshima City residents ¥1,500 / Everyone else ¥2,000 | 2025-10-01 |
+| Museum of the Meiji Restoration (Ishin Furusato-kan) (維新ふるさと館) | Kagoshima City, Kagoshima | in force | Kagoshima City residents ¥450 / Everyone else ¥600 | 2025-10-01 |
+| Saigo Nanshu Memorial Museum (西郷南洲顕彰館) | Kagoshima City, Kagoshima | in force | Kagoshima City residents ¥300 / Everyone else ¥400 | 2025-10-01 |
+| Kagoshima City Science Hall (鹿児島市立科学館) | Kagoshima City, Kagoshima | in force | Kagoshima City residents ¥600 / Everyone else ¥800 | 2025-10-01 |
+| Kagoshima City Museum of Art (permanent collection) (鹿児島市立美術館) | Kagoshima City, Kagoshima | in force | Kagoshima City residents ¥450 / Everyone else ¥600 | 2025-10-01 |
+| Kagoshima Museum of Modern Literature (かごしま近代文学館) | Kagoshima City, Kagoshima | in force | Kagoshima City residents ¥450 / Everyone else ¥600 | 2025-10-01 |
+| Kagoshima Märchen-kan (かごしまメルヘン館) | Kagoshima City, Kagoshima | in force | Kagoshima City residents ¥450 / Everyone else ¥600 | 2025-10-01 |
+| Former Kagoshima Spinning Mill Engineers' Residence (Ijinkan) (旧鹿児島紡績所技師館（異人館）) | Kagoshima City, Kagoshima | in force | Kagoshima City residents ¥300 / Everyone else ¥400 | 2025-10-01 |
+| Former Shimazu Tamazato Residence garden tea house (旧島津氏玉里邸庭園 茶室) | Kagoshima City, Kagoshima | in force | Kagoshima City residents ¥900 / Everyone else ¥1,200 | 2025-10-01 |
+| Kagoshima Culture & Craft Village (かごしま文化工芸村) | Kagoshima City, Kagoshima | in force | Kagoshima City residents ¥300 / Everyone else ¥400 | 2025-10-01 |
+| Miyajima Visit Tax (Itsukushima) (宮島訪問税) | Hatsukaichi, Hiroshima | in force | Miyajima-area residents, commuters/students 48h+/month ¥0 / Everyone else ¥100 | 2023-10-01 |
+| Iwami Ginzan World Heritage Center (石見銀山世界遺産センター) | Oda, Shimane | in force | Foreign visitors ¥300 / General ¥400 |  |
+| Japan's national museums and art museums (国立博物館・国立美術館) | Tokyo, Kyoto, Nara, Dazaifu and others | announced | Japan residents current price / Visitors from abroad higher price, amount not set | planned by the end of FY2030 (March 2031); dates differ by museum |
+| Kenrokuen Garden (兼六園) | Kanazawa, Ishikawa | under review | One price for everyone today | not decided; committee interim report around summer 2027, so not before summer 2027 |
+| Osaka Castle Main Tower (大阪城天守閣) | Osaka, Osaka | dropped | Everyone ¥1,200 |  |
+
 ## API (free, no key, CORS open)
 
 ### GET
@@ -71,5 +107,6 @@ Educational guide, not legal, travel or financial advice. Facilities set and cha
 - Japan International Postage 2027 (Japan Post international mail prices now vs from 2027-02-01: EMS in 1 kg bands, air / surface parcels, small packets, International Air Packet, letters, postcards for any country; keyless API): https://japan-intl-postage.vercel.app
 - Japan Re-entry Deadline Check (when a foreign resident must be back in Japan: deemed re-entry 1 year or residence-card expiry if sooner, SPR 2 years, re-entry permits, 2-month special period while a renewal is pending; keyless API): https://japan-reentry-check.vercel.app
 - Japan Overseas Dependents Check (claim a relative living outside Japan as a dependent / 国外居住親族: age 16-29, 30-69 and 70+ rules, ¥380,000 remittance test, 2026 ¥620,000 income limit, deduction and tax saving; keyless API): https://japan-overseas-dependents.vercel.app
+- Japan Part-time Work Check (can a student, dependent or work-visa holder take this part-time job or side gig: 資格外活動許可 comprehensive 28-hour vs individual permission, rolling 7-day hours, students' 8 h/day vacation rule, banned 風俗営業 venues, 2026-10-01 pachinko / game-center change for Dependent holders; keyless API): https://japan-parttime-check.vercel.app
 - Japan Trip Brain: https://japan-trip-brain.vercel.app
 - Free Agent Tools MCP: https://free-agent-tools.vercel.app
